@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
+import vuejsStorage from 'vuejs-storage'
 
 export default createStore({
   state: {
@@ -78,6 +79,11 @@ export default createStore({
       return data.body[0];
     }
   },
-  modules: {
-  }
+  plugins: [
+    vuejsStorage({
+      keys: ['imei', 'tk', 'idLogin'],
+      namespace: 'ecohospital',
+      driver: vuejsStorage.drivers.sessionStorage
+    })
+  ]
 })
