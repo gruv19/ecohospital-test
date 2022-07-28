@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
 import vuejsStorage from 'vuejs-storage'
+import { BASE_API, API_EVENTS } from '../consts.js'
 
 export default createStore({
   state: {
@@ -39,7 +40,7 @@ export default createStore({
         'IMEI': context.state.imei,
         Name_app: 'connect',
       });
-      const url = new URL('https://host1.medsafe.tech:40443/api/client_login');
+      const url = new URL(`${BASE_API}api/client_login`);
       url.searchParams.set('json', body);
       const resp = await fetch(url);
       const data = await resp.json();
@@ -52,9 +53,9 @@ export default createStore({
         'TK': context.state.tk,
         'IMEI': context.state.imei,
         Name_app: 'connect',
-        Name_event: 'list_load',
+        Name_event: API_EVENTS.listLoad,
       });
-      const url = new URL('https://host1.medsafe.tech:40443/api/test');
+      const url = new URL(`${BASE_API}api/test`);
       url.searchParams.set('json', body);
       const resp = await fetch(url);
       const data = await resp.json();
@@ -68,11 +69,11 @@ export default createStore({
         'TK': context.state.tk,
         'IMEI': context.state.imei,
         Name_app: 'connect',
-        Name_event: 'get_pic_path',
+        Name_event: API_EVENTS.getPicPath,
         id_document: id,
         doc_type: type,
       });
-      const url = new URL('https://host1.medsafe.tech:40443/api/test');
+      const url = new URL(`${BASE_API}api/test`);
       url.searchParams.set('json', body);
       const resp = await fetch(url);
       const data = await resp.json();

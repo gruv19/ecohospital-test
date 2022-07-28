@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import { BASE_API } from '../consts.js';
+
 export default {
   name: 'Home',
   data() {
@@ -35,7 +37,7 @@ export default {
     async download(id, type) {
       const document = await this.$store.dispatch('getDocument', { id, type });
       const tempLink = window.document.createElement('a');
-      tempLink.href = `https://host1.medsafe.tech:40443/${document.hash}`;
+      tempLink.href = `${BASE_API}${document.hash}`;
       tempLink.setAttribute('download', '');
       tempLink.click();
       tempLink.remove();
