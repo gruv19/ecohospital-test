@@ -21,7 +21,6 @@ const router = createRouter({
 
 router.beforeEach((to, from) => {
   if (!store.state.idLogin && to.name !== 'login') {
-    console.log(to, from);
     return { name: 'login' }; 
   }
   if (store.state.idLogin && to.name === 'login') {
