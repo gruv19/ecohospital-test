@@ -42,13 +42,7 @@ export default createStore({
       url.searchParams.set('json', body);
       const resp = await fetch(url);
       const data = await resp.json();
-      if (data[0].id_login) {
-        context.commit('setIdLogin', data[0].id_login);
-        context.commit('setTk', data[0].TK);
-        return;
-      } else {
-        alert('Неверный логи или пароль!');
-      }
+      return data[0];
     },
     async getDocumentList(context) {
       const body = JSON.stringify({
@@ -63,7 +57,6 @@ export default createStore({
       url.searchParams.set('json', body);
       const resp = await fetch(url);
       const data = await resp.json();
-      console.log(data);
       return data.body;
     },
     async getDocument(context, info) {
@@ -82,7 +75,6 @@ export default createStore({
       url.searchParams.set('json', body);
       const resp = await fetch(url);
       const data = await resp.json();
-      console.log(data);
       return data.body[0];
     }
   },
