@@ -101,7 +101,8 @@ export default {
     line-height: 24px;
   }
   &:focus {
-    border-bottom: 1px solid rgb(0, 105, 171);
+    padding: 7px 0 6px;
+    border-bottom: 2px solid rgb(0, 105, 171);
   }
 }
 .login__input {
@@ -120,5 +121,16 @@ export default {
   background-color: rgba(0, 105, 171, 0.2);
   font-weight: bold;
   border-radius: 8px;
+  outline: none;
+  &:hover {
+    background-color: rgba(0, 105, 171, 0.4);
+    transition: 0.2s;
+    cursor: pointer;
+  }
+  &:focus {
+    padding: 9px;
+    border: 2px solid rgb(0, 105, 171);
+    background-color: rgba(0, 105, 171, 0.4);
+  }
 }
 </style>
